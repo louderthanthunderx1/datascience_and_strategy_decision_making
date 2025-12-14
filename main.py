@@ -104,23 +104,30 @@ def main():
                  f"Task 4.2: Ridge Regression (Degree 7, ρ = {rho2})", 
                  "output/task4_2_ridge_0.1.png")
     
-    # Summary comparison plot
+    # Summary comparison plot - ALL METHODS
     print("\n" + "=" * 60)
-    print("Creating comparison plot...")
+    print("Creating comparison plot (ALL METHODS)...")
     print("=" * 60)
     
     plt.figure(figsize=(14, 8))
+    
+    # Training data
     plt.scatter(xk, yk, color='red', alpha=0.6, label='Noisy Training Data', s=50, zorder=5)
-    plt.plot(x_plot, y_pred7, 'b-', linewidth=2, label='Least Squares (Degree 7)', alpha=0.7)
-    plt.plot(x_plot, y_pred7_ridge1, 'g--', linewidth=2, label=f'Ridge (ρ = {rho1})', alpha=0.7)
-    plt.plot(x_plot, y_pred7_ridge2, 'm--', linewidth=2, label=f'Ridge (ρ = {rho2})', alpha=0.7)
+    
+    # All polynomial fits
+    plt.plot(x_plot, y_pred1, 'c-', linewidth=2, label='Degree 1 (Linear)', alpha=0.8)
+    plt.plot(x_plot, y_pred3, 'orange', linewidth=2, label='Degree 3', alpha=0.8)
+    plt.plot(x_plot, y_pred7, 'b-', linewidth=2, label='Degree 7 (Least Squares)', alpha=0.8)
+    plt.plot(x_plot, y_pred7_ridge1, 'g--', linewidth=2, label=f'Degree 7 Ridge (ρ = {rho1})', alpha=0.8)
+    plt.plot(x_plot, y_pred7_ridge2, 'm--', linewidth=2, label=f'Degree 7 Ridge (ρ = {rho2})', alpha=0.8)
+    
     plt.xlabel('x', fontsize=12)
     plt.ylabel('y', fontsize=12)
-    plt.title('Comparison: Least Squares vs Ridge Regression (Degree 7)', fontsize=14, fontweight='bold')
-    plt.legend(fontsize=10)
+    plt.title('Comparison: All Polynomial Regression Methods', fontsize=14, fontweight='bold')
+    plt.legend(fontsize=10, loc='best')
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig("output/comparison_degree7.png", dpi=300, bbox_inches='tight')
+    plt.savefig("output/comparison_all_methods.png", dpi=300, bbox_inches='tight')
     plt.show()
     
     print("\n" + "=" * 60)
